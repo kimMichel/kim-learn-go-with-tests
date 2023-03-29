@@ -36,9 +36,9 @@ Para rodar testes de benchmark:
 
 ```
 go test -bench=.
-
+```
 ou
-
+```
 go test -bench="."
 ```
 
