@@ -14,10 +14,10 @@ func Hello(name, language string) string {
 		name = "World"
 	}
 
-	return PrefixGreeting(language) + name
+	return prefixGreeting(language) + name
 }
 
-func PrefixGreeting(language string) (prefix string) {
+func prefixGreeting(language string) (prefix string) {
 	switch language {
 	case "portuguese":
 		prefix = prefixOla
