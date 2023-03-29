@@ -13,7 +13,7 @@ func TestHello(t *testing.T) {
 	}
 
 	t.Run("say Hello to people", func(t *testing.T) {
-		result := Hello("Kim")
+		result := Hello("Kim", "")
 		expect := "Hello, Kim"
 
 		if result != expect {
@@ -22,8 +22,35 @@ func TestHello(t *testing.T) {
 	})
 
 	t.Run("'World' has default to empty string", func(t *testing.T) {
-		result := Hello("")
+		result := Hello("", "")
 		expect := "Hello, World"
+
+		if result != expect {
+			verifyCorrectMessage(t, result, expect)
+		}
+	})
+
+	t.Run("in portuguese", func(t *testing.T) {
+		result := Hello("Kim", "portuguese")
+		expect := "Olá, Kim"
+
+		if result != expect {
+			verifyCorrectMessage(t, result, expect)
+		}
+	})
+
+	t.Run("in spanish", func(t *testing.T) {
+		result := Hello("Kim", "spanish")
+		expect := "Hola, Kim"
+
+		if result != expect {
+			verifyCorrectMessage(t, result, expect)
+		}
+	})
+
+	t.Run("in french", func(t *testing.T) {
+		result := Hello("Kim", "french")
+		expect := "Bonjour, Kim"
 
 		if result != expect {
 			verifyCorrectMessage(t, result, expect)
