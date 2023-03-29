@@ -6,8 +6,8 @@ import (
 )
 
 func TestRepeat(t *testing.T) {
-	repettions := Repeat("a")
-	expect := "aaaaa"
+	repettions := Repeat("a", 6)
+	expect := "aaaaaa"
 
 	if repettions != expect {
 		t.Errorf("repetitions '%s', expect '%s'", repettions, expect)
@@ -15,13 +15,13 @@ func TestRepeat(t *testing.T) {
 }
 
 func ExampleRepeat() {
-	repetitions := Repeat("b")
+	repetitions := Repeat("b", 6)
 	fmt.Println(repetitions)
-	//Output: bbbbb
+	//Output: bbbbbb
 }
 
 func BenchmarkRepeat(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Repeat("a")
+		Repeat("a", 6)
 	}
 }
