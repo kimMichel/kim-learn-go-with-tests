@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestSum(t *testing.T) {
 
@@ -29,4 +32,13 @@ func TestSum(t *testing.T) {
 		verifyErrorMessage(t, result, expect, numbers)
 	})
 
+}
+
+func TestSumAll(t *testing.T) {
+	result := SumAll([]int{1, 2}, []int{1, 2, 3})
+	expect := []int{3, 6}
+
+	if !reflect.DeepEqual(result, expect) {
+		t.Errorf("result '%d', expect'%d'", result, expect)
+	}
 }
