@@ -42,3 +42,27 @@ func TestSumAll(t *testing.T) {
 		t.Errorf("result '%d', expect'%d'", result, expect)
 	}
 }
+
+func TestSumAllTheRest(t *testing.T) {
+
+	verifySum := func(t *testing.T, result, expect []int) {
+		t.Helper()
+		if !reflect.DeepEqual(result, expect) {
+			t.Errorf("result '%v', expect '%v'", result, expect)
+		}
+	}
+	t.Run("do sum of slices with values", func(t *testing.T) {
+		result := SumAllTheRest([]int{1, 2}, []int{0, 9})
+		expect := []int{2, 9}
+
+		verifySum(t, result, expect)
+	})
+
+	t.Run("sum with empty slices", func(t *testing.T) {
+		result := SumAllTheRest([]int{}, []int{3, 4, 5})
+		expect := []int{0, 9}
+
+		verifySum(t, result, expect)
+	})
+
+}

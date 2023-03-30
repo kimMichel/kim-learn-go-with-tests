@@ -8,11 +8,20 @@ func Sum(numbers []int) (result int) {
 }
 
 func SumAll(numToSum ...[]int) (result []int) {
-	numLength := len(numToSum)
-	result = make([]int, numLength)
+	for _, numbers := range numToSum {
+		result = append(result, Sum(numbers))
+	}
+	return
+}
 
-	for i, number := range numToSum {
-		result[i] = Sum(number)
+func SumAllTheRest(numToSum ...[]int) (result []int) {
+	for _, numbers := range numToSum {
+		if len(numbers) == 0 {
+			result = append(result, 0)
+		} else {
+			final := numbers[1:] // Get first and all
+			result = append(result, Sum(final))
+		}
 	}
 	return
 }
