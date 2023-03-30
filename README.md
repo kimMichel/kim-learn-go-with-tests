@@ -41,4 +41,17 @@ ou
 ```
 go test -bench="."
 ```
-
+## Arrays e Slices
+### Resumindo
+Falamos sobre:
+* Arrays
+* Slices
+* Várias formas de criá-las
+* Como eles têm uma capacidade fixa, mas é possível criar novos slices de antigos usando append
+* Como "fatiar" slices [:1]
+* len obtém o tamanho de um array ou slice
+* Ferramenta de cobertura de testes
+```
+go test -cover
+```
+* reflect.DeepEqual e por que é útil, mas pode diminuir a segurança de tipos do seu código
