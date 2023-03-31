@@ -87,3 +87,30 @@ Para rodar testes isolados
 ```
 go test -run TestArea/Rectangle
 ```
+
+## Ponteiros e erros
+
+### Resumindo
+
+### Ponteiros
+
+- Go copia os valores quando são passados para funções/métodos. Então, se estiver escrevendo uma função que precise mudar o estado, você precisará de um ponteiro para o valor que você quer mudar.
+- O fato de que Go pega um cópia dos valores é muito útil na maior parte do tempo, mas às vezes você não vai querer que o seu sistema faça cópia de alguma coisa. Nesse caso, você precisa passar uma referência. Podemos, por exemplo, ter dados muito grandes, ou coisas que você talvez pretenda ter apenas uma instância (como conexões a banco de dados).
+
+### nil
+
+- Ponteiros podem ser nil.
+- Quando uma função retorna um ponteiro para algo, você precisa ter certeza de verificar se ele é nil ou isso vai gerar uma exceção em tempo de execução, já que o compilador não te consegue te ajudar nesses casos.
+- Útil para quando você quer descrever um valor que pode estar faltando.
+
+### Erros
+
+- Erros são a forma de sinalizar falhas na execução de uma função/método.
+- Analisando nossos testes, concluímos que buscar por uma string em um erro poderia resultar em um teste não muito confiável. Então, refatoramos para usar um valor significativo, que resultou em um código mais fácil de ser testado e concluímos que também seria mais fácil para usuários de nossa API.
+- Este não é o fim do assunto de tratamento de erros. Você pode fazer coisas mais sofisticadas, mas esta é apenas uma introdução. Capítulos posteriores vão abordar mais estratégias.
+- Não somente verifique os erros, trate-os graciosamente.
+
+### Crie novos tipos a partir de existentes
+
+- Útil para adicionar domínios mais específicos a valores.
+- Permite implementar interfaces.
