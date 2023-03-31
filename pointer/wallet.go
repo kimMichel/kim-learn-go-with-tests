@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Bitcoin int
 
@@ -12,8 +15,9 @@ type Stringer interface {
 	String() string
 }
 
+var ErrorInsufficientFunds = errors.New("is not possible to withdraw: insufficient funds")
+
 func (w *Wallet) Deposit(value Bitcoin) {
-	fmt.Printf("The address of the balance in deposit is %v \n", &w.balance)
 	w.balance += value
 }
 
@@ -21,8 +25,12 @@ func (w *Wallet) Balance() Bitcoin {
 	return w.balance
 }
 
-func (w *Wallet) Withdraw(value Bitcoin) {
+func (w *Wallet) Withdraw(value Bitcoin) error {
+	if value > w.balance {
+		return ErrorInsufficientFunds
+	}
 	w.balance -= value
+	return nil
 }
 
 func (b Bitcoin) String() string {
