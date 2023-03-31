@@ -15,11 +15,26 @@ func TestPerimeter(t *testing.T) {
 }
 
 func TestArea(t *testing.T) {
-	rectangle := Rectangle{12.0, 6.0}
-	result := Area(rectangle)
-	expect := 72.0
 
-	if result != expect {
-		t.Errorf("result '%.2f', expect '%.2f'", result, expect)
+	verifyFloatError := func(t *testing.T, result, expect float64) {
+		if result != expect {
+			t.Errorf("result '%.2f', expect '%.2f'", result, expect)
+		}
 	}
+
+	t.Run("rectangle", func(t *testing.T) {
+		rectangle := Rectangle{12.0, 6.0}
+		result := rectangle.Area()
+		expect := 72.0
+
+		verifyFloatError(t, result, expect)
+	})
+
+	t.Run("circle", func(t *testing.T) {
+		circle := Circle{10}
+		result := circle.Area()
+		expect := 314.1592653589793
+
+		verifyFloatError(t, result, expect)
+	})
 }
