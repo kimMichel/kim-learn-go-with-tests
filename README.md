@@ -164,3 +164,29 @@ Martin Fowler.
 - Sem mocks você pode ter que definir bancos de dados e outras dependências externas só para testar regras de negócio simples. Seus testes provavelmente ficarão mais lentos, resultando em **loops de feedback lentos.**
 
 - Ter que conectar a um banco de dados ou webservice para testar algo vai tornar seus testes **frágeis** por causa da falta de segurança nesses serviços.
+
+## Concorrência
+
+### Resumo
+
+Esse exercício foi um pouco mais leve na parte do TDD que o restante. LEvamos um bom tempo refatorando a função VerifyWebsites; as entradas e saídas não mudaram, ela apenas ficou mais rápida. Mas, com os testes que já tinhamos escritom assim como com o benchmark que escrevemos, fomos c apazes de refatorar o VerifyWebsites de forma que mantivéssemos a confiança de que o software ainda estava funcioanndo, enquanto demonstramos que ela realmente havia ficado mais rápida.
+
+Tornando as coisas mais rápidas, aprendemos sobre:
+
+- goroutines, a unidade básica de concorrência em Go, que nos permite verificar mais do que um site ao mesmo tempo.
+
+- funções anônimas, que usamos para iniciar cada um dos processos concorrentes que verificam os sites.
+
+- canais, para nos ajudar a organizar e controlar a comunicação entre diferentes processos, nos permitindo evitar um bug e condição de corrida.
+
+- o detector de corrida, que nos ajudou a desvendar problemas com código concorrente.
+
+### Torne- o rápido
+
+Uma formulação da forma ágil de desenvolver software, erroneamente atribuida a Kent Beck, é:
+
+> Faça funcionar, faça de forma certa, torne-o rápido
+
+Onde 'funcionar' é fazer os testes passarem, 'forma certa' é refatorar o código e 'tornar rápido' é otimizar o código para, por exemplo, tornar sua execução rápida. Só podemos 'torna-lo rápido' quando fizermos funcionar da forma certa. Tivemos sorte que o código que estudamos já estava funcionando e não precisava ser refatorado. Nunca devemos tentar 'torná-lo rápido' antes das outras duas etapas terem sido feitas, porque:
+
+> Otimização prematura é a raiz de todo o mal -- Donal Knuth
