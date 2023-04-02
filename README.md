@@ -128,3 +128,39 @@ Criamos uma API CRUD (Criar, Ler, Atualizar e Deletar) completa para nosso dicio
 - Aprendemos mais sobre erros
   - Como criar erros que são constantes
   - Escrever encapsuladores de erro
+
+## Injeção de dependência
+
+### Resumo
+
+Nossa primeira rodada de código não foi fácil de testar porque escreveemos dados em algum lugar que não podíamos controlar.
+
+Graças aos nossos testes, refatoramso o código para que pudéssemos controlar para onde os dados eram escritos <b>injetando uma dependência</b> que nos permitiu:
+
+- **Testar nosso código**: se você não consegue testar uma função de forma simples, geralmente é porque dependências estão acopladas em uma função ou estado global. Se você tem um pool de conexão global da base de dados, por exemplo, é provável que seja difícil testar e vai ser letno para ser excecutado. A injeção de dependência te motiva a injetar em uma dependência de base de dados (através de uma interface), para que você possa criar um mock com algo que você possa controlar nos seus testes.
+
+- Separar nossas preocupações, desacoplando onde os dados vão de como gerá-çps.
+
+- **Permitir que nosso código seja reutilizado em contextos diferentes:** o primeiro contexto "novo" do nosso código pode ser usado dentro dos testes. No entanto, se alguém quiser testar algo novo com nossa função, a pessoa pode injetar suas próprias dependências.
+
+## Mocks
+
+### Resumo
+
+### Mais sobre abordagem TDD
+
+- Quando se deparar com exemplos menos comuns, divida o problema em "linhas verticais finas". Tente chegar em um ponto onde você tem software em funcionamento com o apoio de testes o mais rápido possível, para evitar cair em armadilhas e se perder.
+
+- Quando tiver uma parte do software em funcionamento, deve ser mais fácil iterar com etapas pequenas até chegar no software que você precisa.
+
+> "Quando usar o desenvolvimento iterativo? Apenas em projetos que você quer obter sucesso."
+
+Martin Fowler.
+
+### Mock
+
+- **Sem o mock, partes importantes do seu código não serão testados**. No nosso caso, não seriamos capazes de testar se nosso código pausava em cada impressão, mas existem inúmeros exemplos. Chamar um serviço que pode falhar? Querer testar seu sistema em um estado em particular? É bem difícil testar esses casos sem mock.
+
+- Sem mocks você pode ter que definir bancos de dados e outras dependências externas só para testar regras de negócio simples. Seus testes provavelmente ficarão mais lentos, resultando em **loops de feedback lentos.**
+
+- Ter que conectar a um banco de dados ou webservice para testar algo vai tornar seus testes **frágeis** por causa da falta de segurança nesses serviços.
