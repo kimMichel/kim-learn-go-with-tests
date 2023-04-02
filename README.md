@@ -114,3 +114,17 @@ go test -run TestArea/Rectangle
 
 - Útil para adicionar domínios mais específicos a valores.
 - Permite implementar interfaces.
+
+## Maps
+
+### Resumo
+
+Criamos uma API CRUD (Criar, Ler, Atualizar e Deletar) completa para nosso dicionário.
+
+- Criar maps
+- Buscar por itens em maps
+- Atualizar novos itens aos maps
+- Deletar itens de um map
+- Aprendemos mais sobre erros
+  - Como criar erros que são constantes
+  - Escrever encapsuladores de erro
