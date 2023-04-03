@@ -2,22 +2,23 @@ package runner
 
 import (
 	"net/http"
-	"time"
 )
 
 func Runner(a, b string) (winner string) {
 
-	durationA := measureResponseTime(a)
-	durationB := measureResponseTime(b)
-
-	if durationA < durationB {
+	select {
+	case <-ping(a):
 		return a
+	case <-ping(b):
+		return b
 	}
-	return b
 }
 
-func measureResponseTime(URL string) time.Duration {
-	start := time.Now()
-	http.Get(URL)
-	return time.Since(start)
+func ping(URL string) chan bool {
+	ch := make(chan bool)
+	go func() {
+		http.Get(URL)
+		ch <- true
+	}()
+	return ch
 }
