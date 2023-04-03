@@ -190,3 +190,19 @@ Uma formulação da forma ágil de desenvolver software, erroneamente atribuida 
 Onde 'funcionar' é fazer os testes passarem, 'forma certa' é refatorar o código e 'tornar rápido' é otimizar o código para, por exemplo, tornar sua execução rápida. Só podemos 'torna-lo rápido' quando fizermos funcionar da forma certa. Tivemos sorte que o código que estudamos já estava funcionando e não precisava ser refatorado. Nunca devemos tentar 'torná-lo rápido' antes das outras duas etapas terem sido feitas, porque:
 
 > Otimização prematura é a raiz de todo o mal -- Donal Knuth
+
+## Select
+
+### Resumo
+
+### select
+
+- Ajuda você a escutar vários canais.
+
+- Às vezes você pode precisar incluir time.After em um de seus cases para prevenir que seu sistema fique bloqueado para sempre.
+
+### httptest
+
+- Uma forma conveniente de criar servidores de teste para que se tenha testes confiáveis e controláveis.
+
+- Usa as mesmas interfaces que servidores net/http reais, o que torna seu sistema consistente e gera menos coisas para você aprender.
