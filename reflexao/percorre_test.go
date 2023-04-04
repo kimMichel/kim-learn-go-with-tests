@@ -53,6 +53,14 @@ func TestRun(t *testing.T) {
 			},
 			[]string{"Kim", "São Paulo"},
 		},
+		{
+			"Pointer to things",
+			&Person{
+				"Kim",
+				Profile{24, "São Paulo"},
+			},
+			[]string{"Kim", "São Paulo"},
+		},
 	}
 
 	for _, test := range cases {
