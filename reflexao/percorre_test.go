@@ -5,6 +5,16 @@ import (
 	"testing"
 )
 
+type Person struct {
+	Name    string
+	Profile Profile
+}
+
+type Profile struct {
+	Age  int
+	City string
+}
+
 func TestRun(t *testing.T) {
 
 	cases := []struct {
@@ -26,6 +36,22 @@ func TestRun(t *testing.T) {
 				City string
 			}{"Kim", "Brazil"},
 			[]string{"Kim", "Brazil"},
+		},
+		{
+			"Struct without string field",
+			struct {
+				Name string
+				Age  int
+			}{"Kim", 24},
+			[]string{"Kim"},
+		},
+		{
+			"Nested Fields",
+			Person{
+				"Kim",
+				Profile{24, "São Paulo"},
+			},
+			[]string{"Kim", "São Paulo"},
 		},
 	}
 
