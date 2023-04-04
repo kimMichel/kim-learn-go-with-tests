@@ -61,6 +61,30 @@ func TestRun(t *testing.T) {
 			},
 			[]string{"Kim", "São Paulo"},
 		},
+		{
+			"Slices",
+			[]Profile{
+				{24, "São Paulo"},
+				{25, "Seul"},
+			},
+			[]string{"São Paulo", "Seul"},
+		},
+		{
+			"Arrays",
+			[2]Profile{
+				{24, "São Paulo"},
+				{25, "Seul"},
+			},
+			[]string{"São Paulo", "Seul"},
+		},
+		{
+			"Maps",
+			map[string]string{
+				"Foo": "Bar",
+				"Baz": "Boz",
+			},
+			[]string{"Bar", "Boz"},
+		},
 	}
 
 	for _, test := range cases {
