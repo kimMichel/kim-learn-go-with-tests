@@ -206,3 +206,17 @@ Onde 'funcionar' é fazer os testes passarem, 'forma certa' é refatorar o códi
 - Uma forma conveniente de criar servidores de teste para que se tenha testes confiáveis e controláveis.
 
 - Usa as mesmas interfaces que servidores net/http reais, o que torna seu sistema consistente e gera menos coisas para você aprender.
+
+## Reflexão
+
+### Resumo
+
+- Apresentamos alguns dos conceitos do pacote reflect.
+
+- Usamos recursão para percorrer estruturas de dados arbitrárias.
+
+- Houve uma reflexão quanto a uma refatoração ruim, mas não há por que se preocupar muito com isso. Isso não deve ser um problema muito grande se trabalharmos com testes de forma iterativa.
+
+- Esse capítulo só cobre um aspecto pequeno de reflexão.
+
+- Agora que você tem conhecimento sobre reflexão, faça o possóvel para evitá-lo.
