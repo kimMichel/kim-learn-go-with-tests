@@ -220,3 +220,37 @@ Onde 'funcionar' é fazer os testes passarem, 'forma certa' é refatorar o códi
 - Esse capítulo só cobre um aspecto pequeno de reflexão.
 
 - Agora que você tem conhecimento sobre reflexão, faça o possóvel para evitá-lo.
+
+## Sync
+
+### Resumo
+
+- Falamos sobre algumas coisas do pacote sync:
+
+  - Mutex nos permite adicionar travas aos nossos dados
+
+  - WaitGroup é uma maneira de esperar as goroutines terminarem suas tarefas
+
+### Quando usar travas em vez de channels e goroutines?
+
+Anteriormente falamos sobre goroutines no primeiro capítulo sobre concorrência que nos permite escrever código concorrente e seguro, então porque usar travas?
+
+> Um erro comum de um iniciante em Go é usar demais os channels e goroutines apenas porque é possível e/ou porque é divertido. Não tenha medo de usar um sync.Mutex se for uma solução melhor para o seu problema. Go é um pragmático em deixar você escolher as ferramentas que melhor resolvem o seu problema e não te força em um único estilo de código.
+
+Resumindo:
+
+- Use channels quando for passar a propriedade de um dado
+
+- Use mutexes para gerenciar estados
+
+### go vet
+
+Não se esqueça de usar o go vet nos seus scripts de build porque ele pode te alertar a respeito de bugs mais sutis no seu código antes que eles atinjam seus pobres usuários.
+
+### Não use códigos embutidos apenas porque é conveniente
+
+- Pense a respeito do efeito que embutir códigos tem na sua API pública.
+
+- Você realmente quer expôr esses métodos e ter pessoas acoplando o código próprio delas a ele?
+
+- Mutexes podem se tornar um desastre de maneiras muito imprevisíveis e estranhas. Imagine um código inesperado destravando um mutex quando não deveria? Isso causaria erros muito estranhos que seriam muito difíceis de encontrar.
